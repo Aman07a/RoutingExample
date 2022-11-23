@@ -1,6 +1,13 @@
+using RoutingExample.CustomConstraints;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// builder.Services.AddRouting(options =>
+// {
+//     options.ConstraintMap.Add("months", typeof(MonthsCustomConstraint));
+// });
+
 var app = builder.Build();
 
 // Enable routing
