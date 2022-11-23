@@ -125,15 +125,20 @@ app.UseEndpoints(endpoints =>
     //         await context.Response.WriteAsync($"{month} is not allows");
     //     }
     // });
+
+    // // sales-report/2024/jan
+    // endpoints.Map("sales-report/2024/jan", async context => {
+    //     await context.Response.WriteAsync($"Sales report exclusively for 2024 - jan");
+    // });
+});
+
+app.Run(async context =>
+{
+    await context.Response.WriteAsync($"No route mamtched at {context.Request.Path}");
 });
 
 // app.Run(async context =>
 // {
-//     await context.Response.WriteAsync($"No route mamtched at {context.Request.Path}");
+//     await context.Response.WriteAsync($"Request received at {context.Request.Path}");
 // });
-
-app.Run(async context =>
-{
-    await context.Response.WriteAsync($"Request received at {context.Request.Path}");
-});
 app.Run();
