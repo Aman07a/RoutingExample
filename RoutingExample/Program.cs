@@ -22,10 +22,24 @@ app.UseEndpoints(endpoints =>
     });
 
     // Eg: products/details/id
-    endpoints.Map("products/details/{id=1}", async context =>
+    // endpoints.Map("products/details/{id=1}", async context =>
+    // {
+    //     int id = Convert.ToInt32(context.Request.RouteValues["id"]);
+    //     await context.Response.WriteAsync($"Product details - {id}\n");
+    // });
+
+    // Eg: products/details/
+    endpoints.Map("products/details/{id?}", async context =>
     {
-        int id = Convert.ToInt32(context.Request.RouteValues["id"]);
-        await context.Response.WriteAsync($"Product details - {id}\n");
+        if (context.Request.RouteValues.ContainsKey("id"))
+        {
+            int id = Convert.ToInt32(context.Request.RouteValues["id"]);
+            await context.Response.WriteAsync($"Product details - {id}\n");
+        }
+        else
+        {
+            await context.Response.WriteAsync($"Product details - id is not supplied\n");
+        }
     });
 });
 
