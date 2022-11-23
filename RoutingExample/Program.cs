@@ -1,3 +1,5 @@
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
@@ -70,7 +72,58 @@ app.UseEndpoints(endpoints =>
     //     Guid cityId = Guid.Parse(Convert.ToString(context.Request.RouteValues["cityid"])!);
     //     await context.Response.WriteAsync($"City information - {cityId}");
     // });
+
+    // // length(4, 7)
+    // // minlength() && maxlength()
+    // endpoints.Map("employee/profile/{EmployeeName:minlength(4):maxlength(7):=harsha}", async context =>
+    // {
+    //     string? employeeName = Convert.ToString(context.Request.RouteValues["employeeName"]);
+    //     await context.Response.WriteAsync($"In Employee profile - {employeeName}\n");
+    // });
+
+    // // min() && max()
+    // // range(1, 1000)
+    // endpoints.Map("products/details/{id:int:range(1, 1000)}", async context =>
+    // {
+    //     if (context.Request.RouteValues.ContainsKey("id"))
+    //     {
+    //         int id = Convert.ToInt32(context.Request.RouteValues["id"]);
+    //         await context.Response.WriteAsync($"Product details - {id}\n");
+    //     }
+    //     else
+    //     {
+    //         await context.Response.WriteAsync($"Product details - id is not supplied\n");
+    //     }
+    // });
+
+    // // alpha
+    // endpoints.Map("employee/profile/{EmployeeName:minlength(4):maxlength(7):alpha:=harsha}", async context =>
+    // {
+    //     string? employeeName = Convert.ToString(context.Request.RouteValues["employeeName"]);
+    //     await context.Response.WriteAsync($"In Employee profile - {employeeName}\n");
+    // });
+
+    // // regex()
+    // // sales-report/2030/apr
+    // endpoints.Map("sales-report/{year:int:min(1900)}/{month:regex(^(apr|jul|oct|jan)$)}", async context =>
+    // {
+    //     int year = Convert.ToInt32(context.Request.RouteValues["year"]);
+    //     string? month = Convert.ToString(context.Request.RouteValues["month"]);
+    //     if (month == "apr" || month == "jul" || month == "oct" || month == "jan")
+    //     {
+    //         await context.Response.WriteAsync($"Sales report - {year} - {month}");
+    //     }
+    //     else
+    //     {
+    //         await context.Response.WriteAsync($"{month} is not allows");
+    //     }
+    // });
 });
+
+// app.Run(async context =>
+// {
+//     await context.Response.WriteAsync($"No route mamtched at {context.Request.Path}");
+// });
 
 app.Run(async context =>
 {
